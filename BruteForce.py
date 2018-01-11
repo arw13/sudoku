@@ -1,7 +1,7 @@
 # Brute force solving of sudoku#
 
 import numpy as np
-
+import pdb
 
 # Sample sudoku
 
@@ -36,6 +36,7 @@ def CheckForDubs(sudoku):
                 if len(dubcheck.tolist()) > 1:
                     return dubcheck
 
+pdb.set_trace()
 
 
 #collect immutable numbers
@@ -61,8 +62,6 @@ def Sudone(sudoku):
         print(cnt)
         cnt += 1
     done = True*((col== 9 and row == 9) or (col == 0 and row == 0))
-
-
 
 
 print(CountSudoku)
