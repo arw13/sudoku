@@ -1,7 +1,7 @@
 # Brute force solving of sudoku#
 
 import numpy as np
-import pdb
+
 
 # Sample sudoku
 
@@ -23,45 +23,49 @@ def CheckForDubs(sudoku):
         for cols in range(0,9):
             dubcheck = np.extract(sudoku[:,cols] == nums, sudoku)
             if len(dubcheck.tolist()) > 1:
-                return dubcheck
+                return 1 #dubcheck
 
         for rows in range(0,9):
             dubcheck = np.extract(sudoku[rows, :] == nums, sudoku)
             if len(dubcheck.tolist()) > 1:
-                return dubcheck
+                return 2 #dubcheck
 
         for i in range(0,7,3):
             for j in range(0,7,3):
                 dubcheck = np.extract(sudoku[i:i+3, j:j+3] == nums, sudoku)
                 if len(dubcheck.tolist()) > 1:
-                    return dubcheck
-
-pdb.set_trace()
+                    return 3 # dubcheck
+    else:
+        return 0
 
 
 #collect immutable numbers
-def Sudone(sudoku):
+def Sudone(mat_in):
+    sudoku = mat_in
     cnt = 0
-    done = False
+    done = 0
     col = 0
     row = 0
     cnt = 0
-    while done is False:
-        while CheckForDubs(sudoku) !=0 and sudoku[row, col]<=8:
+    while done is 0:
+        while (CheckForDubs(sudoku) !=0 or sudoku[row, col] == 0) and sudoku[row, col]<=8 :
             sudoku[row, col] +=1
         if CheckForDubs(sudoku) == 0:
             col +=1
             if col == 9:
                col = 0
                row += 1
-        if CheckForDubs(sudoku) !=0 and sudoku[row, col]==9:
+        if CheckForDubs(sudoku) !=0 or sudoku[row, col]==9:
             col -= 1
             if col == 0:
                 col = 9
                 row -=1
-        print(cnt)
+        # print(CountSudoku, end='')
         cnt += 1
-    done = True*((col== 9 and row == 9) or (col == 0 and row == 0))
+        # print(cnt, end = '')
+        done = True*((col == 9 and row == 9) or (col <= 0 and row <= 0))
+    return sudoku
 
 
-print(CountSudoku)
+X = Sudone(CountSudoku)
+print(X)
