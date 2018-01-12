@@ -61,6 +61,7 @@ def Sudone(mat_in):
     col = 0
     row = 0
     m = 1 # momentum
+
     while done is 0:
         while (CheckForDubs(sudoku) !=0 or m != 0) and sudoku[row, col]<9 :
             if mat_in[row,col]==0:
