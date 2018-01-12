@@ -61,7 +61,7 @@ def Sudone(mat_in):
     done = 0
     col = 0
     row = 0
-    
+
     while done is 0:
         while (CheckForDubs(sudoku) !=0 or sudoku[row, col] == 0) and sudoku[row, col]<10 :
             if mat_in[row,col]==0:
