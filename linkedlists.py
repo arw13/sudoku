@@ -66,7 +66,7 @@ class LinkedList:
            last = last.next
        # 6. Change the next of last node
        last.next =  new_node
-       
+
     # Given a reference to the head of a list and a key,
     # delete the first occurence of key in linked list
     def deleteNode(self, key):
@@ -97,6 +97,7 @@ class LinkedList:
         prev.next = temp.next
 
         temp = None
+        
 # main run
 if __name__ == '__main__':
 
